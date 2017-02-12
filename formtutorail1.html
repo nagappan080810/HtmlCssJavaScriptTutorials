@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Tutorial</title>
+<link rel="stylesheet" type="text/css" href="formtutorail1.css">
+<script>
+function isInvalidValue(event){
+  console.log(event.target);
+  var elem = event.target;
+  var value = elem.value;
+  var pattern = elem.pattern;
+  var regexp = new RegExp(pattern);
+  var result = regexp.test(value);
+  console.log("entered value valid status" + result);
+  document.getElementsByClassName("submit")[0].disabled=result?false:true;
+}
+function validateAndAddToList(event){
+   var node, textelement;
+   var fieldNames = ["fname","lname","dept","gender"];
+   console.log("validating...");
+   var row = document.createElement("TR");
+   for (var i=0; i<fieldNames.length;i++){
+      value = document.getElementsByName(fieldNames[i])[0].value;
+	    document.getElementsByName(fieldNames[i])[0].value = "";
+	    node = document.createElement("TD");
+      textelement = document.createTextNode(value);
+      node.appendChild(textelement);
+	  row.appendChild(node);
+   }
+   var tableElem = document.getElementsByClassName("tableclass")[0];
+   tableElem.appendChild(row);
+   console.log(document.forms["myForm"]);
+   event.preventDefault();   
+}
+</script>
+</head>
+<body>
+<div class="formcontainer">
+<form name="myForm">
+<div class="formelement">
+   <label for="fname">First Name</label>
+   <input type="text" name="fname" pattern="^[A-Za-z]+$" onchange="isInvalidValue(event)" title="name should have the alphabets"></input>
+</div>
+<div class="formelement">
+   <label for="lname">Last Name</label>
+   <input type="text" name="lname"></input>
+</div>
+<div class="formelement">
+    <label for="dept">Department</label>
+	<select name="dept">
+	   <option>ECE</option>
+	   <option>EEE</option>
+	   <option>CSE</option>
+	</select>
+</div>
+<div class="formelement">
+    <label for="gender">Sex</label>
+	<input type="radio" name="gender" value="male" checked>Male
+	<input type="radio" name="gender" value="female">Female
+</div>
+<div class="formelement">
+     <label for="email">Email Id</label>
+     <input type="text" name="email" pattern="^[A-Za-z0-9.]+@[A-Za-z0-9]+.[A-Za-z0-9]+$" onchange="isInvalidValue(event)" title="Not a valid email address"></input>
+</div>
+<input type="submit" value="Add To List" class="submit" onclick="validateAndAddToList(event)"></input>
+</form>
+</div>
+<br>
+<br>
+<table class="tableclass">
+<tr>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Department</th>
+<th>Gender</th>
+</tr>
+</table>
+</body>
+</html>

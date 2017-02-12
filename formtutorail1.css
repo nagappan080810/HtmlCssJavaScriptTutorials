@@ -1,0 +1,28 @@
+div.formelement{
+padding: 3px;
+margin: 3px;
+}
+label{
+display: inline-block;
+width: 90px;
+}
+select{
+border: 0.8px solid grey;
+}
+div.formcontainer{
+width:350px;
+padding: 10px 10px 30px 10px;
+border: 0.3px solid grey;
+}
+.submit{
+margin: 3px;
+padding: 3px;
+float:right;
+}
+td ,th{
+border:1px solid grey;
+width: 100px;
+}
+input:invalid {
+	border:2px solid red;
+}

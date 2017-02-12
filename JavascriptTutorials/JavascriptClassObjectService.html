@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Simple JavaScript Class and Instantiates Object</title>
+<script type="text/javascript">
+var Person = function(name) {
+	this.name = name;
+    this.print = function() {
+        console.log("name of the Person-"+this.name);
+    }
+}
+var PersonService = function() {
+    personObj = {};//static variable
+}
+//static methods as it is Service Util to create Person obj and access its methods
+PersonService.createPerson = function() {
+	var name = document.getElementsByTagName("input")[0].value;
+	PersonService.personObj = new Person(name);
+	console.log("Person object created successfully"); 
+	console.log(PersonService.personObj);
+}
+PersonService.printPerson = function() {
+    PersonService.personObj.print();
+}
+var personService = new PersonService();
+</script>
+</head>
+<body>
+<label>Enter name</label>
+<input></input>
+<button onclick="PersonService.createPerson()">Create Person Object</button>
+<button onclick="PersonService.printPerson()">Print Person Object</button>
+</body>
+</html>

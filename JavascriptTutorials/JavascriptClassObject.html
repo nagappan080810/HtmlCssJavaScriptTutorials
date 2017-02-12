@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Simple JavaScript Class and Instantiates Object</title>
+<script type="text/javascript">
+var Person = function(name) {
+	this.name = name;
+    this.print = function() {
+        console.log("name of the Person-"+this.name);
+    }
+}
+var personObj;
+function createPerson() {
+	var name = document.getElementsByTagName("input")[0].value;
+	personObj = new Person(name);
+	console.log("Person object created successfully"); 
+	console.log(personObj);
+}
+function printPerson() {
+    personObj.print();
+}
+</script>
+</head>
+<body>
+<label>Enter name</label>
+<input></input>
+<button onclick="createPerson()">Create Person Object</button>
+<button onclick="printPerson()">Print Person Object</button>
+</body>
+</html>
