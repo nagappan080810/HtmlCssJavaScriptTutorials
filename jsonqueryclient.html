@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>JSON Client</title>
+<style>
+.tablestyle{
+	width: 100%;
+	border-spacing: 10px;
+}
+.querybox{
+	width: 90%;
+}
+.inputjsonstyle{
+	width: 100%;
+	height: 500px;
+}
+.queryoutputstyle {
+	width: 100%;
+	height: 400px;
+}
+</style>
+<script>
+var inputjson;
+function executeQuery() {
+	inputjson = JSON.parse(document.getElementsByClassName("inputjsonstyle")[0].value);
+	console.log(inputjson);
+	var query = document.getElementsByClassName("querybox")[0].value;
+	console.log(query);
+	console.log(eval(query));
+	document.getElementsByClassName("queryoutputstyle")[0].value=eval(query);
+}
+</script>
+</head>
+<body>
+<table class="tablestyle">
+<tr>
+<td>
+<h4>Enter the json code</h4>
+<div><textarea class="inputjsonstyle"></textarea></div>
+</td>
+<td>
+<h4>Enter the json query </h4>
+<p>start with inputjson followed by period</p>
+<div>
+<input type="textbox" class="querybox"></input>
+<button onclick="executeQuery()">Execute</button>
+</div>
+<h4>Query output</h4>
+<div><textarea class="queryoutputstyle"></textarea></div>
+</td>
+</tr>
+</table>
+</body>
+</html>
